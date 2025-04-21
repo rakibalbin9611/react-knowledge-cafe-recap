@@ -1,5 +1,7 @@
 import React from "react";
 import { CiBookmark } from "react-icons/ci";
+import { Flip, ToastContainer } from "react-toastify";
+import { Bounce } from "react-toastify/unstyled";
 const Blog = ({ blog, handleAddBookmark, handleBookAsRead }) => {
   //   console.log(blog);
   const {
@@ -34,6 +36,19 @@ const Blog = ({ blog, handleAddBookmark, handleBookAsRead }) => {
             className="text-3xl font-bold ml-2 text-red-700"
           >
             <CiBookmark></CiBookmark>
+            <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick={false}
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+              transition={Bounce}
+            />
           </button>
         </div>
       </div>

@@ -3,19 +3,25 @@ import "./App.css";
 import Blogs from "./Components/Blogs/Blogs";
 import Bookmarks from "./Components/Bookmarks/Bookmarks";
 import Header from "./Components/Header/Header";
+import { toast } from "react-toastify";
 
 function App() {
   const [bookmarks, setBookmarks] = useState([]);
   // console.log(bookmarks);
   const [markAsReadTime, setMarkAsReadTime] = useState(0);
 
-  const handleBookAsRead = (time) => {
+  const handleBookAsRead = (id, time) => {
     setMarkAsReadTime(markAsReadTime + time);
   };
 
   const handleAddBookmark = (blog) => {
-    const newBookmarks = [...bookmarks, blog];
-    setBookmarks(newBookmarks);
+    const newBookmark = [...bookmarks, blog];
+    const isExist = bookmarks.find((item) => item.id == blog.id);
+    if (!isExist) {
+      setBookmarks(newBookmark);
+    } else {
+      toast("Already bookmarked!!");
+    }
   };
   return (
     <>
